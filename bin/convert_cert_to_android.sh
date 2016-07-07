@@ -25,3 +25,6 @@ openssl x509 -inform DER -text -in ${CERT_FILE_INPUT}  | head -${LINENUMBER} >> 
 cat ${OUTPUT_FILENAME}
 
 echo "Created file under ${OUTPUT_FILENAME}.  Now remount /system and use adb to push this file to /system/etc/security/cacerts"
+echo "Use command: adb root && adb wait-for-device remount && adb wait-for-device push [name of cert] /system/etc/security/cacerts/[name of cert]"
+echo "Then check the permissions on the file:  adb shell ls -al -Z /system/etc/security/cacerts/*"
+
